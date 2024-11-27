@@ -1,6 +1,8 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { Image, Platform, StyleSheet } from 'react-native';
 
+import { Colors } from '@/constants/Colors';
 import { HelloWave } from '@/components/HelloWave';
+import { Link } from 'expo-router';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
@@ -16,39 +18,32 @@ export default function HomeScreen() {
         />
       }>
       <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
+        <ThemedText type="title">Help!</ThemedText>
         <HelloWave />
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
+        <ThemedText type="subtitle">People View</ThemedText>
         <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
+          The people Stack is outside of the tab bar. We have back navigation, but the tab bar is hidden.
         </ThemedText>
+        <Link push href="/people/john" style={styles.button}>
+          <ThemedText style={styles.buttonText}>John</ThemedText>
+        </Link>
+        <Link push href="/people/you" style={styles.button}>
+          <ThemedText style={styles.buttonText}>You</ThemedText>
+        </Link>
       </ThemedView>
       <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
+        <ThemedText type="subtitle">Item View</ThemedText>
         <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
+          The item Stack is inside of the tab bar. We can see the tab bar, but we don't have back navigation.
         </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
+        <Link push href="/items/1" style={styles.button}>
+          <ThemedText style={styles.buttonText}>Item 1</ThemedText>
+        </Link>
+        <Link push href="/items/gooditem" style={styles.button}>
+          <ThemedText style={styles.buttonText}>Good Item</ThemedText>
+        </Link>
       </ThemedView>
     </ParallaxScrollView>
   );
@@ -70,5 +65,13 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     position: 'absolute',
+  },
+  button: {
+    padding: 8,
+    backgroundColor: Colors.light.tint,
+    borderRadius: 4,
+  },
+  buttonText: {
+    color: Colors.light.background,
   },
 });
