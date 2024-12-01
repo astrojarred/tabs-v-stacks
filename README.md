@@ -37,18 +37,19 @@ The solution is to use shared routes together with the `segment` prop to conditi
 - Stack exchange on [shared routes and segment](https://stackoverflow.com/questions/78592895/link-to-a-route-with-expo-router-outside-of-the-current-tab-stack-while-keeping)
 
 ```
-- _layout.tsx
+- _layout.tsx  (root layout)
 - /(tabs)
-   - _layout.tsx
+   - _layout.tsx  [expo router tabs with (home) and (explore)]
    - /(home,explore)
+      - _layout.tsx  (key layout file)
       - index.tsx
       - explore.tsx
       - /items
-         - _layout.tsx (expo-router Stack)
+         - _layout.tsx  (expo-router Stack)
          - [id].tsx
          - gooditem.tsx
       - /people
-         - _layout.tsx (expo-router Stack)
+         - _layout.tsx  (expo-router Stack)
          - [name].tsx
          - you.tsx
 ```
