@@ -1,11 +1,13 @@
-import { StyleSheet, Image, Platform } from 'react-native';
+import { Image, Platform, StyleSheet } from 'react-native';
 
 import { Collapsible } from '@/components/Collapsible';
+import { Colors } from '@/constants/Colors';
 import { ExternalLink } from '@/components/ExternalLink';
+import { IconSymbol } from '@/components/ui/IconSymbol';
+import { Link } from 'expo-router';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { IconSymbol } from '@/components/ui/IconSymbol';
 
 export default function TabTwoScreen() {
   return (
@@ -23,6 +25,12 @@ export default function TabTwoScreen() {
         <ThemedText type="title">Explore</ThemedText>
       </ThemedView>
       <ThemedText>This app includes example code to help you get started.</ThemedText>
+      <Link push href="/people/john" style={styles.button}>
+          <ThemedText style={styles.buttonText}>John</ThemedText>
+      </Link>
+      <Link push href="/items/gooditem" style={styles.button}>
+        <ThemedText style={styles.buttonText}>Good Item</ThemedText>
+      </Link>
       <Collapsible title="File-based routing">
         <ThemedText>
           This app has two screens:{' '}
@@ -105,5 +113,13 @@ const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
     gap: 8,
+  },
+  button: {
+    padding: 8,
+    backgroundColor: Colors.light.tint,
+    borderRadius: 4,
+  },
+  buttonText: {
+    color: Colors.light.background,
   },
 });
